@@ -36,9 +36,10 @@ async function connectToDB() {
     await client.close();
   }
 }
-connectToDB().catch(console.dir);
-mongoose.connect(mongoDB);
-
+// connectToDB().catch(console.dir);
+mongoose.connect(mongoDB)
+  .then(() => console.log("Connected to MongoDB"))
+  .catch(console.error);
 
 // Returns a lobby
 app.get("/lobby/:join_code", async (req, res) => {
@@ -308,4 +309,8 @@ app.put("/lobby/:join_code", async (req, res) => {
   }
 });
 
-app.listen(8080);
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

@@ -1,5 +1,3 @@
-lyzzi_admin / 6fWjE7AXjOCgInDz
-
 db set up
 
 - add `MONGO_DB` to `.env`
